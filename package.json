@@ -1,0 +1,37 @@
+{
+  "name": "azure-esm-tester",
+  "version": "1.0.0",
+  "description": "Testing Azure SDKs with CJS and ESM",
+  "main": "dist/cjs/src/index.js",
+  "module": "dist/esm/src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm && node ./scripts/fixup.mjs",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "format": "prettier --config .prettierrc.json 'src/**/*.ts' --write",
+    "lint": "eslint . --ext .ts",
+    "start:tsx": "npm run start:cjs && npm run start:esm",
+    "start:tsx:cjs": "tsx --tsconfig tsconfig.cjs.json src/index.ts",
+    "start:tsx:esm": "tsx --tsconfig tsconfig.esm.json src/index.ts",
+    "start:build": "npm run start:build:cjs && npm run start:build:esm",
+    "start:build:cjs": "npm run build:cjs && node dist/cjs/src/index.js",
+    "start:build:esm": "npm run build:esm && node dist/esm/src/index.js"
+  },
+  "keywords": [
+    "azure",
+    "esm",
+    "typescript"
+  ],
+  "author": "Matthew Podwysocki",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
