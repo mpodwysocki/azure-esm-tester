@@ -6,17 +6,18 @@
   "module": "dist/esm/src/index.js",
   "type": "module",
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm && node ./scripts/fixup.mjs",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm && node ./scripts/fixup.mjs",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
+    "clean": "rimraf dist",
     "format": "prettier --config .prettierrc.json 'src/**/*.ts' --write",
     "lint": "eslint . --ext .ts",
-    "start:tsx": "npm run start:cjs && npm run start:esm",
+    "start:tsx": "npm run start:tsx:cjs && npm run start:tsx:esm",
     "start:tsx:cjs": "tsx --tsconfig tsconfig.cjs.json src/index.ts",
     "start:tsx:esm": "tsx --tsconfig tsconfig.esm.json src/index.ts",
-    "start:build": "npm run start:build:cjs && npm run start:build:esm",
-    "start:build:cjs": "npm run build:cjs && node dist/cjs/src/index.js",
-    "start:build:esm": "npm run build:esm && node dist/esm/src/index.js"
+    "start:build": "npm run build && npm run start:build:cjs && npm run start:build:esm",
+    "start:build:cjs": "node dist/cjs/src/index.js",
+    "start:build:esm": "node dist/esm/src/index.js"
   },
   "keywords": [
     "azure",
@@ -31,7 +32,19 @@
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
     "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@azure-rest/core-client": "~/Downloads/core/azure-rest-core-client-1.2.1.tgz",
+    "@azure/core-auth": "~/Downloads/core/azure-core-auth-1.6.1.tgz",
+    "@azure/core-rest-pipeline": "~/Downloads/core/azure-core-rest-pipeline-1.14.1.tgz",
+    "@azure/core-sse": "~/Downloads/core/azure-core-sse-2.0.1.tgz",
+    "@azure/core-util": "~/Downloads/core/azure-core-util-1.7.1.tgz",
+    "@azure/logger": "~/Downloads/core/azure-logger-1.0.5.tgz",
+    "@azure/openai": "^1.0.0-beta.11",
+    "dotenv": "^16.4.1",
+    "tslib": "^2.6.2"
   }
 }
