@@ -39,9 +39,13 @@
   "dependencies": {
     "@azure-rest/core-client": "~/Downloads/core/azure-rest-core-client-1.2.1.tgz",
     "@azure/core-auth": "~/Downloads/core/azure-core-auth-1.6.1.tgz",
+    "@azure/core-client": "~/Downloads/core/azure-core-client-1.8.1.tgz",
     "@azure/core-rest-pipeline": "~/Downloads/core/azure-core-rest-pipeline-1.14.1.tgz",
     "@azure/core-sse": "~/Downloads/core/azure-core-sse-2.0.1.tgz",
+    "@azure/core-tracing": "~/Downloads/core/azure-core-tracing-1.0.2.tgz",
     "@azure/core-util": "~/Downloads/core/azure-core-util-1.7.1.tgz",
+    "@azure/identity": "^4.0.1",
+    "@azure/keyvault-keys": "^4.7.2",
     "@azure/logger": "~/Downloads/core/azure-logger-1.0.5.tgz",
     "@azure/openai": "^1.0.0-beta.11",
     "dotenv": "^16.4.1",
